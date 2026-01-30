@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CancellationForm from '../components/CancellationForm/CancellationForm';
 import '../styles/glassmorphism.css';
 import '../styles/animations.css';
