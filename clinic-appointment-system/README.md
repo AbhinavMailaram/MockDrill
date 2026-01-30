@@ -254,6 +254,44 @@ This project is licensed under the MIT License.
 
 For support, email support@cliniccare.com or open an issue in the repository.
 
+## 📦 Production Deployment
+
+This application is **deployment-ready** with comprehensive configuration and documentation:
+
+- **[DEPLOYMENT.md](DEPLOYMENT.md)** - Complete deployment guide for various platforms (Heroku, AWS, DigitalOcean, Vercel, Netlify)
+- **[DOCKER.md](DOCKER.md)** - Docker and containerized deployment instructions
+- **[ENV_VARS.md](ENV_VARS.md)** - Environment variables configuration reference
+- **[PRE_DEPLOYMENT_CHECKLIST.md](PRE_DEPLOYMENT_CHECKLIST.md)** - Step-by-step checklist before deploying
+
+### Quick Deployment Options
+
+#### Option 1: Docker Compose (Recommended for local/testing)
+```bash
+cd clinic-appointment-system
+docker-compose up -d
+```
+
+#### Option 2: Traditional Build & Deploy
+
+**Frontend:**
+```bash
+cd frontend
+npm install
+npm run build
+# Deploy the 'build' folder to your hosting service
+```
+
+**Backend:**
+```bash
+cd backend
+mvn clean package
+java -jar target/appointment-system-1.0.0.jar --spring.profiles.active=production
+```
+
+### CI/CD
+
+GitHub Actions workflow is configured at `.github/workflows/ci-cd.yml` for automated builds and deployments.
+
 ## 🔮 Future Enhancements
 
 - [ ] JWT authentication implementation
