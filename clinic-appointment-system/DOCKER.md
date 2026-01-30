@@ -9,10 +9,22 @@ This guide explains how to deploy the Clinic Appointment Management System using
 
 ## Quick Start with Docker Compose
 
-The easiest way to run the entire application stack is using Docker Compose:
+**IMPORTANT**: Before starting, configure your environment variables for security.
+
+### 1. Configure Environment Variables
 
 ```bash
 cd clinic-appointment-system
+cp .env.example .env
+```
+
+Edit the `.env` file and set secure values:
+- `POSTGRES_PASSWORD`: Your database password
+- `JWT_SECRET`: A strong secret key (generate with `openssl rand -base64 64`)
+
+### 2. Start the Application
+
+```bash
 docker-compose up -d
 ```
 

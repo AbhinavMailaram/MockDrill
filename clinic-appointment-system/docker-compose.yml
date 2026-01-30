@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_DB: clinic_appointment_db
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme_insecure_default}
     ports:
       - "5432:5432"
     volumes:
@@ -30,8 +30,8 @@ services:
       SPRING_PROFILES_ACTIVE: production
       DATABASE_URL: jdbc:postgresql://db:5432/clinic_appointment_db
       DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: postgres
-      JWT_SECRET: mySecretKeyForJWTTokenGenerationAndValidation123456789
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-changeme_insecure_default}
+      JWT_SECRET: ${JWT_SECRET}
       HIBERNATE_DDL_AUTO: update
     ports:
       - "8080:8080"
