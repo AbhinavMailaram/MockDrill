@@ -6,11 +6,18 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+# Set minimal permissions by default
+permissions:
+  contents: read
+
 jobs:
   # Frontend Build and Test
   frontend:
     name: Frontend Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     defaults:
       run:
         working-directory: ./clinic-appointment-system/frontend
@@ -47,6 +54,9 @@ jobs:
   backend:
     name: Backend Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     defaults:
       run:
         working-directory: ./clinic-appointment-system/backend
@@ -78,6 +88,9 @@ jobs:
   docker-build:
     name: Docker Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     needs: [frontend, backend]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
@@ -109,6 +122,9 @@ jobs:
   security-scan:
     name: Security Scan
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     needs: [frontend, backend]
 
     steps:
